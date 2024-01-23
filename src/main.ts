@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 dotenv.config();
@@ -17,7 +17,7 @@ async function bootstrap() {
   // Swagger document for the APIs
   const options = new DocumentBuilder()
     .setTitle('Pokemon API')
-    .setDescription('A publicly available service for fetching pokemon information')
+    .setDescription('A public service for fetching pokemon information')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);

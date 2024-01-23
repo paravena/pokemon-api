@@ -10,12 +10,12 @@ import { CacheModule, CacheInterceptor } from '@nestjs/cache-manager';
   imports: [
     PokemonModule,
     // Basic throttling/rate-limiting setup.
-    ThrottlerModule.forRootAsync({
-      useFactory: () => ({
+    ThrottlerModule.forRoot([
+      {
         ttl: Number(process.env.THROTTLE_TTL),
         limit: Number(process.env.THROTTLE_LIMIT),
-      }),
-    }),
+      },
+    ]),
     // Basic in memory caching based on the request-urls.
     CacheModule.registerAsync({
       useFactory: () => ({
